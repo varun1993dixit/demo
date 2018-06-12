@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<head>
+	<style>
+		#fullpage, .select {
+			position: relative;
+		}
+		body {
+			margin: 0;
+			overflow: hidden;
+		}
+		img{
+			width:100%;
+		}
+.select{
+	 overflow: auto;
+}
+	</style>
+	<script src="js/jquery.js"></script>
+</head>
+<body>
+	<div id="fullpage">
+		<div class="select"><div class="xyz"><img src="image/1.jpg"/></div>
+		</div>
+		<div class="select"><div class="xyz"><img src="image/2.jpg"/></div>
+		</div>
+		<div class="select"><div class="xyz"><img src="image/3.jpg"/></div>
+		</div>
+		<div class="select"><div class="xyz"><img src="image/6.jpg"/></div>
+		</div>
+
+	</div>
+
+	<script>
+		var len = $(".select").length - 1, win_height = $(window).height(), total = (len + 1) * win_height, flag = true;
+
+		//$("#fullpage").css("height", total);
+
+		$(".select").css("height", win_height);
+
+		$(".select").eq(0).addClass("current");
+		// var demo;
+
+$( window ).resize(function() {
+	//clearInterval(demo)
+	//demo=setTimeout(function(){
+	win_height = $(window).height();
+	//console.log(win_height)
+	$(".select").css("height", win_height);
+//	$("img").css("height", win_height);
+	var index=$(".select.current").index(".select");
+	//console.log($(".select.current").index(".select"));
+
+	$("#fullpage").css({"top":-index*win_height});
+	//},1000)
+
+})
+		//key press event
+		// $("body").on("keydown", function(e) {
+			// //alert("keypress")
+			// if( e.keyCode == 38 || e.keyCode == 40 || e.which == 32 ){
+				 // e.preventDefault();
+			// }
+// 
+			// if(flag){
+// 
+				// var index = $(".select.current").index();
+// 
+				// if (e.keyCode == 38 && index > 0 && index <= len) {
+					// flag=false;
+					// slideUp(index);
+				// }
+				// if (e.keyCode == 40 && index >= 0 && index < len) {
+					// flag=false;
+					// slideDown(index);
+				// }
+			// }
+// 
+// 
+		// });
+
+		// var scrollCount2 = 0;
+		// demo3 = function(){
+			// var index2=$(".select.current").index(".select");
+			// scrollCount2++;
+			// console.log(scrollCount2)
+			// if($(this).scrollTop()==0 && index2>0 && index2 <= len ){
+			// slideUp(index2)
+			// }
+		// }
+		// console.log(document.querySelectorAll(".select"))
+		// var nodeL =document.querySelectorAll(".select");
+// 		
+		// [].forEach.call(nodeL,function(e){e.addEventListener('mousewheel',demo3,false)});
+		// [].forEach.call(nodeL,function(e){e.addEventListener('scroll',demo3,false)});
+// 		
+
+		
+		
+
+		//console.log($(window).height());
+		//Mouse Scroll Event for crome and IE
+		var scrollCount = 0;
+		var scrollCount1 = 0;
+		var stuckFlag = false;
+		
+		var x=0;
+	var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+    // document.getElementById('look-into-us').addEventListener(mousewheelevt, onwheelScrollLI, false);
+
+		$('.select').on(mousewheelevt, function(e) {
+			var index1=$(".select.current").index(".select");
+			
+			
+			
+			
+//console.log($(this).scrollTop())
+
+	//		$('.select').scroll(function(){
+			//console.log($(this).scrollTop())
+			
+			if (flag) {
+				var index = $(".select.current").index();
+				if (e.originalEvent.wheelDelta  < 0 ||e.originalEvent.detail > 0) {
+					console.log(1)
+			//	if($(window).height()+$(this).scrollTop()==Math.floor($(".xyz").eq(index1).height())){
+				
+					//scroll down
+					//console.log($(this).scrollTop())
+					//console.log("down")
+					scrollCount1=0;
+					stuckFlag = $(window).height()+$(this).scrollTop()>=Math.floor($(".xyz").eq(index1).height());
+					
+					if (index >= 0 && index < len && stuckFlag){
+						stuckFlag = false;
+						console.log(2)
+						flag = false;
+					//	slideDown(index);
+					x=$(this).scrollTop();
+					//console.log(x)
+					 scrollCount ++;
+					// console.log(x)
+					}
+			//	} 
+				}
+				 else {
+					//scroll up
+					//console.log("up")
+					scrollCount=0;
+					
+					//console.log($(this).scrollTop())
+				//	console.log($(".select.current").prev().scrollTop())
+					if ( index > 0 && index <= len && $(this).scrollTop()<=0){
+						
+						flag = false;
+						scrollCount1 ++;
+						//slideUp(index);
+					}
+				}
+
+				// else if($(this).scrollTop()<=0){
+					// console.log($(this).scrollTop())
+// 					
+				// }
+	
+			//return false;
+			}
+			
+			// else{
+				// $('.select ').scroll(function(){
+// 		 
+// //console.log($(this).scrollTop());
+// //console.log($(".xyz").eq(index1).height())
+    // //console.log($(window).scrollTop());
+// });
+			// }
+
+		//	});
+			//console.log(x);
+		// if($(".current").scrollTop()==0){
+			// console.log($(".current").scrollTop());
+			// scrollCount2++;
+			// if(scrollCount2>2){
+			// slideUp(index1);
+			// scrollCount2=0;
+			// }
+		// }
+
+		if(index1 >= 0 && index1 < len && scrollCount==1 && (e.originalEvent.wheelDelta  < 0 ||e.originalEvent.detail > 0)  ){
+				
+				//console.log(x)
+				slideDown(index1);
+				
+				scrollCount=0;
+				
+				//return false;
+			}	
+			
+		else if(index1 > 0 && index1 <= len && scrollCount1==1 && (e.originalEvent.wheelDelta  > 0 ||e.originalEvent.detail < 0)){
+			slideUp(index1);
+				scrollCount1=0;
+				//return false;
+		}	
+			
+		});
+// $(document).ready(function(){
+	// $('.select ').scroll(function(){
+// 		 
+// console.log($(this).scrollTop());
+    // //console.log($(window).scrollTop());
+// });
+// })
+
+		//Mouse Scroll Event firefox
+		// $('#fullpage1').on('DOMMouseScroll', function(e) {
+			// e.preventDefault();
+			// if (flag) {
+//
+				// var index = $(".select.current").index();
+				// if (e.originalEvent.detail > 0) {
+					// //scroll down
+					// if (index >= 0 && index < len){
+						// flag = false;
+						// slideDown(index);
+					// }
+				// } else {
+						// //scroll up
+					// if (index > 0 && index <= len){
+						// flag = false;
+						// slideUp(index);
+					// }
+				// }
+			// }
+			// return false;
+		// });
+// 		
+
+		function slideUp(index) {
+
+			$("#fullpage").animate({
+				top : '+=' + (win_height),
+			}, 500,function(){
+				flag=true;
+			});
+			$(".select").siblings().removeClass("current");
+			$(".select").eq(index - 1).addClass("current")
+
+		}
+
+		function slideDown(index) {
+
+			$("#fullpage").animate({
+				top : '-=' + (win_height),
+			}, 500,function(){
+				flag=true;
+			});
+			$(".select").siblings().removeClass("current");
+
+			$(".select").eq(index + 1).addClass("current")
+		}
+	</script>
+</body>

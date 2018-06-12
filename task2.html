@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<ul class="each"></ul>
+		<script>
+		var	arr=['12','11','10','9','8','7','6','5','4','3','2','1'];
+		var color=['blue','green','yellow','grey','orange','GreenYellow ','skyblue','Aqua','Brown','CadetBlue','Magenta','Maroon']
+			arr.forEach(function(val,i){
+			var x=	$(".each").prepend("<li>"+val+"</li>")
+			})
+			$(document).ready(function(){
+				$(document).on("click","li",function(){
+					 x=$(this).index()
+					 if(x==0){
+					 var y=color[x]
+					 $(".active").css("background-color", "");	
+					$(this).prevAll().addClass('active');	
+					$(this).addClass('active');	
+					$(this).nextAll().removeClass('active')
+					
+					$(".active").css("background-color",y)
+					 
+					 }
+					 else{
+					 	
+					 	$(".active").css("background-color", "");
+					 	$(this).prevAll().addClass('active');	
+					$(this).addClass('active');	
+					$(this).nextAll().removeClass('active')
+					console.log(x)
+					$("li").each(function(index){
+						t	=color[index]
+					
+						$("li").eq(index).css("background-color",t)	
+					 	//console.log(x)
+					 	console.log(t)
+					 	console.log(color[index])
+					if(x==index){
+						
+						return false;
+					}
+					
+					 	})
+					 }
+					
+						
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE =HTML>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<h2> NAME</h2>
+		<form action="/action_page.php">
+			<select required>
+  <option value="" disabled selected hidden>Select something...</option>
+  <option value="name">First Name</option>
+  <option value="email">Email Address</option>
+</select>
+</form>
+<br />
+<br />
+<br />
+<br />
+<div class="name">
+<h4>First Name</h4>
+<p>sddgsf</p>
+<p>sddgsf</p>
+<p>sddgsf</p>
+</div>
+<script>
+$(".name").empty();
+	myObj = {
+    
+    "data": [
+        { "name":"Ford", "email":"abc@gmail.com" },
+        { "name":"BMW", "email":"xyz@gmail.com" },
+        { "name":"Fiat", "email":"pqr@gmail.com" }
+    ]
+ }
+ 
+ 
+	$("select").change(function(){
+		//alert()
+		var field=$(this).val();
+		console.log($(this).index())
+		$.each(myObj.data,function(i, item) {
+		
+		  console.log(myObj.data[i][field])
+		})
+    //process($(this).children(":selected").html());
+});
+	
+	
+	
+	
+</script>
+	</body>
+</html>

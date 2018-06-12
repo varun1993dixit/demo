@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head> 
+    <style>
+    	body {
+  margin: 0;
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  height: 100vh;
+  color: #fff;
+}
+
+.sect-1 {
+  background-image: url(http://mylevel.work88.ru/img/image5.png);
+  background-size: cover;
+}
+
+.sect-2 img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+.sect-2 .text {
+  z-index: 1;
+  top: 1%;
+}
+
+.text {
+  font-family: "verdana", sans-serif;
+  font-weight: bold;
+  font-size: 4em;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  margin-top: -35px;
+  left: 0;
+  right: 0;
+}
+
+p {
+  margin: 0;
+  text-align: center;
+}
+.parallex{
+	 position: absolute;
+	height:100px;
+	width:100px;
+	background-color: red;
+}
+
+    </style>
+</head>
+<body>
+  <section class="sect-1">
+  <div class="text">
+    <p>Lorem ipsum dolor sit amet.</p>
+    
+  </div>
+  <div class="parallex"></div>
+</section>
+<section class="sect-2">
+  <div class="text">
+    <p>Lorem ipsum</p>
+  </div>
+  <img src="http://mylevel.work88.ru/img/image7.png" alt="img">
+</section>
+      <script>
+      	$(window).scroll(function(){
+  var st = $(this).scrollTop();
+  $(".text").css({
+    "transform" : "translate(0%," + st + "%)" 
+  });
+  
+  $(".sect-2 img").css({
+    "transform" : "translate(0%,-" + st/20 + "%)" 
+  });
+   $(".parallex").css({
+    "transform" : "translate(0%," + 2*st + "%)" 
+  });
+});
+      </script>
+</body>
+
+</html>

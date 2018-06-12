@@ -1,0 +1,216 @@
+{
+
+	 "features": [
+		{
+			"type": "Feature",
+			"properties": {
+				"name": "Van Dorn Street",
+				"marker-color": "#0000ff",
+				"marker-symbol": "rail-metro",
+				"line": "blue",
+				"images": ["https://i.imgur.com/EKJmqui.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"1"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.12911152370515, 38.79930767201779]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Franconia-Springfield",
+				"marker-color": "#0000ff",
+				"marker-symbol": "rail-metro",
+				"line": "blue",
+				"images": ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"2"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.16797018042666, 38.766521892689916]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Federal Center SW",
+				"marker-color": "#0000ff",
+				"marker-symbol": "rail-metro",
+				"line": "blue",
+			"images": ["https://i.imgur.com/O6QEpBs.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+			"title":"3"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.01586821694521, 38.885072355144786]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Judiciary Sq",
+				"marker-color": "#ff0000",
+				"marker-symbol": "rail-metro",
+				"line": "red",
+				"images": ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"4"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.01663895662587, 38.896090317663166]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Capitol South",
+				"marker-color": "#0000ff",
+				"marker-symbol": "rail-metro",
+				"line": "blue",
+				"images": ["https://i.imgur.com/EKJmqui.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"5"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.00513941992737, 38.885062500925]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Metro Center",
+				"marker-color": "#ff0000",
+				"marker-symbol": "rail-metro",
+				"line": "red",
+				"images": ["https://i.imgur.com/LHNDBpf.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"6"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.02807799718069, 38.89831447321318]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Gallery Pl-Chinatown",
+				"marker-color": "#ff0000",
+				"marker-symbol": "rail-metro",
+				"line": "red",
+				"images": ["https://i.imgur.com/O6QEpBs.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"7"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.02191539042379, 38.89831680979661]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Mt Vernon Sq - 7th St Convention Center",
+				"marker-color": "#008000",
+				"marker-symbol": "rail-metro",
+				"line": "green",
+				"images": ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"8"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.02191438038649, 38.906436814951725]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "U St/African-Amer Civil War Memorial/Cardozo",
+				"marker-color": "#008000",
+				"marker-symbol": "rail-metro",
+				"line": "green",
+				"images": ["https://i.imgur.com/LHNDBpf.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"9"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.0274958929489, 38.91700239924426]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Union Station",
+				"marker-color": "#ff0000",
+				"marker-symbol": "rail-metro",
+				"line": "red",
+				"images": ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"10"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.00741429219985, 38.89776603923524]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Congress Heights",
+				"marker-color": "#008000",
+				"marker-symbol": "rail-metro",
+				"line": "green",
+				"images": ["https://i.imgur.com/LHNDBpf.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"11"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-76.98851193260715, 38.84565770287511]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Naylor Road",
+				"marker-color": "#008000",
+				"marker-symbol": "rail-metro",
+				"line": "green",
+				"images": ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"12"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-76.95626270945314, 38.8513013835867]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Suitland",
+				"marker-color": "#008000",
+				"marker-symbol": "rail-metro",
+				"line": "green",
+				"images": ["https://i.imgur.com/O6QEpBs.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"13"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-76.93187015895299, 38.84396455441679]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Branch Ave",
+				"marker-color": "#008000",
+				"marker-symbol": "rail-metro",
+				"line": "green",
+				"images": ["https://i.imgur.com/LHNDBpf.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"14"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-76.91146421773884, 38.82644634832078]
+			}
+		}, {
+			"type": "Feature",
+			"properties": {
+				"name": "Braddock Road",
+				"marker-color": "#0000ff",
+				"marker-symbol": "rail-metro",
+				"line": "blue",
+				"images": ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."],
+				"title":"15"
+			},
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-77.05366757406264, 38.81414366728901]
+			}
+		}
+	]
+}

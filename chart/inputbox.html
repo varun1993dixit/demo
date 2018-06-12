@@ -1,0 +1,101 @@
+<!DOCTYPE =HTML>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<select id="myselect" name="myselect" type="text">
+			<option selected="selected">Choose the Category</option>
+		</select>
+		<input type="text" id="inputbox"/>
+		<button>
+			Add
+		</button>
+		<br />
+		<br />
+		<select id="select" name="select" type="text">
+			<option selected="selected">different Category</option>
+		</select>
+		<script>
+			var info = {
+				"category" : "hfgg",
+				"category1" : "fgaa",
+				"category2" : "sfdgfd",
+				"category3" : "sdzhfd",
+				"category4" : "xjga",
+				"category5" : "smnfd",
+				"category6" : "jfaa",
+				"category7" : "jhaa",
+			}
+			jsonObj = [];
+
+			$.each(info, function(i, value) {
+				$('#myselect').append($('<option>').text(value));
+				$('#myselect option').val()
+
+			});
+			//  console.log($(this).val())
+			var categoryy;
+			$('#myselect option').on("click", function() {
+			
+				 categoryy = $(this).val();
+				 	$('#select').empty()
+				//console.log(jsonObj)
+				// item = {}
+// 				
+				// item["title"] = categoryy;
+				// item["subcategory"] = [];
+				// jsonObj.push(item);//$('#select').empty()
+				console.log(categoryy);
+				//console.log(jsonObj.subcategory)
+				$.each(jsonObj,function(key,value){
+					
+					if(value.title==categoryy){
+						console.log(value.subcategory);
+						$.each(value.subcategory,function(keyy,valuee){
+							console.log(valuee)
+							//$('#select').empty()
+							$('#select').append($('<option>').text(valuee.subCategoryTitle))
+						})
+						
+					}
+				})
+			});
+			$('button').on("click", function() {
+				//console.log(item);
+				
+				//jsonObj1 = [];
+				var bool=false;
+				if(jsonObj.length!=0){
+					$.each(jsonObj,function(key,val){
+						if(val.title==categoryy){
+							bool=true;
+							console.log(val.subcategory)
+							val.subcategory.push({"subCategoryTitle":$("#inputbox").val()});
+							
+						}
+						$('#select').append($('<option>').text($("#inputbox").val()))
+					})
+				} 
+					if(bool==false){
+						jsonObj.push({
+						"title":categoryy,
+						"subcategory":[{"subCategoryTitle":$("#inputbox").val()}]
+					})
+					 $('#select').append($('<option>').text($("#inputbox").val()))
+					}
+				
+				console.table(jsonObj)
+				
+				//var categoryyy=($("#inputbox").val())
+				// item["subcategory"] = {};
+				// item["subcategory"]["sub"] = categoryyy;
+				// jsonObj1.push(item);
+				// console.log(jsonObj);
+				// $('#select').append($('<option>').text($("#inputbox").val()))
+			});
+
+		</script>
+
+	</body>
+</html>

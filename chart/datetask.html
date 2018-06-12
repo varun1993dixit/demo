@@ -1,0 +1,110 @@
+<!DOCTYPE =HTML>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		input date
+		<input  value = ""  id="date"  min="1" required="required"/>
+		input month
+		<input  value = ""  id="month" min="1"  max="12" required="required"/>
+		input year
+		<input  value = ""  id="year" min="0" required="required"/>
+		<p id="day">
+			
+		</p>
+		<script>
+			var d = new Date();
+			var yr;
+			var mon;
+			var da;
+			var a;
+			var month = d.getMonth() + 1;
+			//console.log(month)
+			var day = d.getDate();
+			//console.log(day)
+			var output = d.getFullYear() + '/' + (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day;
+			//console.log(d.getFullYear())
+			$("input").focusout(function() {
+				$("#year").val();
+				$("#month").val();
+				$("#date").val();
+				//a = $(this).val();
+
+				yr = $("#year").val();
+				mon = $("#month").val();
+				da = $("#date").val();
+				if (d.getFullYear() < yr) {
+					$("#day").text(da + "/" + mon + "/" + yr).css("color", "green");
+				}
+				if (d.getFullYear() == yr) {
+					if (month < mon) {
+						$("#day").text(da + "/" + mon + "/" + yr).css("color", "green");
+					}
+					if (month == mon) {
+						if (d.getDate() < da) {
+							
+							$("#day").text(da + "/" + mon + "/" + yr).css("color", "green");
+						}
+						if (d.getDate() == da) {
+							$("#day").text(da + "/" + mon + "/" + yr).css("color", "green");
+						}
+						if (d.getDate() > da) {
+							$("#day").text(da + "/" + mon + "/" + yr).css("color", "red");
+						}
+					}
+					if (month > mon) {
+						$("#day").text(da + "/" + mon + "/" + yr).css("color", "red");
+					}
+				}
+				if (d.getFullYear() > yr) {
+					$("#day").text(da + "/" + mon + "/" + yr).css("color", "red");
+				}
+
+			});
+
+			$("#date").focusout(function() {
+				da = $(this).val();
+			});
+
+			// yr = $(this).val();
+			// //console.log(d.getFullYear())
+			// //console.log(yr);
+			// if (d.getFullYear() < yr) {
+			// alert()
+			// }
+			// if (d.getFullYear() == yr) {
+			// $("#month").focusout(function() {
+			// mon = $(this).val();
+			// console.log(mon);
+			// if (d.getMonth() < mon) {
+			// alert()
+			// }
+			// if (d.getMonth() == mon) {
+			// $("#date").focusout(function() {
+			// da = $(this).val();
+			// if (d.getDate() < da) {
+			// alert()
+			// }
+			// if (d.getDate() == da) {
+			// alert()
+			// }
+			// if (d.getDate() > da) {
+			//
+			// }
+			//
+			// });
+			//
+			// }
+			// if (d.getMonth() > mon) {
+			//
+			// }
+			//
+			// });
+			// }
+			// if (d.getFullYear() > yr) {
+			//
+			// }
+		</script>
+	</body>
+</html>

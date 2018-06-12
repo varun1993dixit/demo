@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<style>
+		.error {
+			color: red
+		}
+	</style>
+	<body>
+		<ul class="each"></ul>
+		<ul class="eachc"></ul>
+		<script>
+			$.getJSON("matchcolumn.json", function(json) {
+				// console.log(json); // this will show the info it in firebug console
+				demo(json)
+			});
+			var random;
+			$(document).ready(function() {
+				$('.check').on('change', function() {
+					$('.check').not(this).prop('checked', false);
+				});
+			})
+			$(document).ready(function() {
+				$('.checkk').on('change', function() {
+					$('.checkk').not(this).prop('checked', false);
+				});
+			})
+			var len;
+			function demo(data) {
+				console.log(data.match.length)
+				len = data.match.length;
+				data.match.forEach(function(val, i) {
+					console.log(val.country)
+					$(".each").append("<li class = country>" + val.country + "</li>")
+					$(".eachc").append("<li country = " + val.country + " class = capital>" + val.capital + "</li>")
+
+				})
+				$(".each").find("li").append('<input type="checkbox" class="check" >')
+				$(".eachc").find("li").append('<input type="checkbox" class="checkk" >')
+
+				for (var i = 0; i < len; i++) {
+
+					random = Math.floor(Math.random() * len);
+					console.log(random)
+					//$(".country").eq(random).prependTo(".each")
+					$(".capital").eq(random).prependTo(".eachc")
+					//$(".each").append("<li class = country>"+val.country+"</li>")
+
+				}
+				//console.log($('.country input.check'))
+				var x, y, z;
+				$('input.check').on("click", function() {
+
+					if ($('.country input.check').is(':checked')) {
+						//$('input.checkk').removeAttr("disabled");
+						t=$(this)
+						z = $(this).parent()
+						x = $(this).parent().text()
+						console.log(x)
+						if (x == y) {
+							
+						}
+						//console.log($('.country').text())
+					}
+				})
+
+				$('input.checkk').on("click", function() {
+					if ($('.country input.check').is(':checked') == true) {
+						if ($('input.checkk').is(':checked')) {
+							a = $(this).parent()
+							y = $(this).parent().attr("country")
+							if (x == y) {
+								
+								a.css("color", "green")
+								
+								$(this).attr("disabled", "disabled");
+								var hold = $(this).parent("li").attr("country");
+								
+								$("body").find("li:contains("+ hold +")").css("color","green").find("input").attr("disabled", "disabled");
+								
+								// console.log(a.remove())
+								// console.log(z.remove())
+							} else if (x != y) {
+								
+								a.css("color", "red")
+								
+								setTimeout(function() {
+									$(' input.checkk').prop('checked', false);
+console.log(t.prop('checked', false))
+									//a.siblings().css("color", "black")
+									a.css("color", "black")
+								}, 500)
+								// a.show(2,function(){
+								// a.css("color","red")
+								// })
+							}
+							//console.log($('.country').text())
+						}
+					} else {
+						//$('input.checkk').attr("disabled", "disabled");
+						$(' input.checkk').prop('checked', false);
+					}
+				})
+				
+				//console.log(data.match[0].country)
+			}
+		</script>
+	</body>
+</html>

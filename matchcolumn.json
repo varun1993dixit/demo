@@ -1,0 +1,22 @@
+{
+"match":[{
+"country":"India",
+"capital":"Delhi"
+},{
+"country":"USA",
+"capital":"Washington D.C."
+},{
+"country":"UK",
+"capital":"London"
+},{
+"country":"Australia",
+"capital":"Melbourne"
+},{
+"country":"Canada",
+"capital":"Ottawa"
+},{
+"country":"Russia",
+"capital":"Moscow"
+}
+]
+}

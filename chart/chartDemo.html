@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Chart.js sample Chart</title>
+  
+  <style>
+  	#ctx{
+  		height:170 !important;
+  		width:300 !important;
+  		margin:0 !important;
+        padding:0 !important;
+  	}
+  </style>
+  
+  
+  
+</head>
+
+<body>
+
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<canvas id="ctx" height="170" width="300"></canvas>
+  
+
+    <script>
+    	Chart.plugins.register({
+   beforeDraw: function(chart) {
+      var ctx = chart.chart.ctx,
+          x_axis = chart.scales['x-axis-0'],
+          topY = chart.scales['y-axis-0'].top,
+          bottomY = chart.scales['y-axis-0'].bottom;
+      x_axis.options.gridLines.display = false; // hide original grid-lines
+      // loop through x-axis ticks
+      x_axis.ticks.forEach(function(label, index) {
+         if (index === 0) return;
+         var x = x_axis.getPixelForValue(label);
+         ctx.save();
+         ctx.beginPath();
+         ctx.strokeStyle = x_axis.options.gridLines.color;
+         ctx.moveTo(x, topY);
+         ctx.lineTo(x, bottomY);
+         ctx.stroke();
+         ctx.restore();
+      });
+   }
+});
+
+var chart = new Chart(ctx, {
+   type: 'line',
+   data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+         label: 'LINE',
+         data: [3, 1, 4, 2, 5],
+         backgroundColor: 'rgba(0, 119, 290, 0.2)',
+         borderColor: 'rgba(0, 119, 290, 0.6)',
+         fill: false,
+         tension: 0
+      }]
+   },
+   options: {
+      scales: {
+         yAxes: [{
+            ticks: {
+               beginAtZero: true,
+               stepSize: 1
+            },
+            gridLines: {
+               display: false
+            }
+         }]
+      }
+   }
+});
+    </script>
+
+
+
+
+</body>
+
+</html>

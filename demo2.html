@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8 />
+		<title>Filtering marker cluster groups</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+		<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			img {
+				height: 160px;
+				width: 270px
+			}
+		</style>
+	</head>
+	<body>
+		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
+		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+		<style>
+			#colors {
+				position: absolute;
+				top: 0;
+				right: 0;
+				background: #fff;
+				width: 150px;
+				padding: 5px;
+			}
+			img.leaflet-marker-icon:hover {
+				height: 80px !important;
+				width: 40px !important;
+			}
+			
+			pre.ui-coordinates {
+				background: rgba(0,0,0,0.5);
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+				padding: 5px 10px;
+				color: #fff;
+				font-size: 11px;
+				line-height: 18px;
+				border-radius: 3px;
+				max-height: 240px;
+				overflow: auto;
+				width: 100px;
+			}
+			.active{height: 80px !important;
+				width: 40px !important;
+				}
+		</style>
+		<div id='map'></div>
+		<pre id='coordinates' class='ui-coordinates'></pre>								
+
+ <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+		<form id='colors'>
+			<div>
+				<input type='checkbox' name='filters' onclick='showStations();' value='red' checked>
+				red
+			</div>
+			<div>
+				<input type='checkbox' name='filters' onclick='showStations();' value='green' checked>
+				green
+			</div>
+
+			<div>
+				<input type='checkbox' name='filters' onclick='showStations();' value='yellow' checked>
+				yellow
+			</div>
+			<div>
+				<input type='checkbox' name='filters' onclick='showStations(); ' value='blue' checked>
+				blue
+			</div>
+		</form>
+
+		<script>
+			L.mapbox.accessToken = 'pk.eyJ1IjoianRob21hc3NpZSIsImEiOiJHaUxIakJNIn0.-YMjtvwXuWt_ZwB9L5ZZYA';
+			// Here we don't use the second argument to map, since that would automatically
+			// load in non-clustered markers from the layer. Instead we add just the
+			// backing tileLayer, and then use the featureLayer only for its data.
+			var map = L.mapbox.map('map', 'mapbox.streets').setView([38.9, -77], 13).on("click",function(){
+				$("body").find("img.leaflet-marker-icon").removeClass("active");
+			})
+			//var map = L.mapbox.map('map', 'mapbox.dc-markers');
+
+    map.featureLayer.on('click', function(e) {
+    	alert()
+        map.panTo(e.layer.getLatLng());
+    });
+
+			var overlays = L.layerGroup().addTo(map);
+			var markers = new L.MarkerClusterGroup();
+			var myLayer = L.mapbox.featureLayer().addTo(map);
+			console.log(myLayer)
+
+			var layers;
+
+			L.mapbox.featureLayer().loadURL('stations.json').on('ready', function(e) {
+				layers = e.target;
+				showStations();
+			}).on('layeradd', function(e) {
+				var marker = e.layer, feature = marker.feature;
+		
+				// Create custom popup content from the GeoJSON property 'video'
+				var popupContent = "<img src = " + feature.properties.images[0] + ">"
+				//console.log(feature.properties)
+				//console.log(popupContent)
+				// bind the popup to the marker http://leafletjs.com/reference.html#popup
+				
+				marker.bindPopup(popupContent, {
+					closeButton : true,
+					//minWidth : 320
+					
+				});
+			}).on('click',function(){
+				
+			})
+
+			// Add features to the map
+			var filters = document.getElementById('colors').filters;
+			console.log(filters)
+			//var filters2=document.getElementById('title').filters;
+
+			function showStations() {
+				// first collect all of the checked boxes and create an array of strings
+				// like ['green', 'blue']
+				var list = [];
+				console.log(list)
+				for (var i = 0; i < filters.length; i++) {
+					if (filters[i].checked) {
+						list.push(filters[i].value);
+					}
+				}
+				// then remove any previously-displayed marker groups
+				overlays.clearLayers();
+				markers.clearLayers();
+				// create a new marker group
+				var clusterGroup = new L.MarkerClusterGroup().addTo(overlays);
+				// and add any markers that fit the filtered criteria to that gro
+				layers.eachLayer(function(layer) {
+					//console.log(layer);
+					if (list.indexOf(layer.feature.properties.line) !== -1) {
+						//console.log(layer.feature.properties.line);
+						var title = layer.feature.properties.title;
+						var marker = L.marker(new L.LatLng(layer._latlng.lat, layer._latlng.lng), {
+							//icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+							title : title
+						});						
+					//	console.log(marker-size)
+						clusterGroup.addLayer(layer);
+						markers.addLayer(marker);
+						console.log(markers)
+						//console.log(clusterGroup);
+					}
+				});
+				filterList()
+			}
+			console.log(markers)
+			map.on('move ready', function() {
+				// Construct an empty list to fill with onscreen markers.
+				filterList()
+			});
+
+			function filterList() {
+				var inBounds = [],
+				// Get the map bounds - the top-left and bottom-right locations.
+				bounds = map.getBounds();
+				console.log(bounds)
+				// For each marker, consider whether it is currently visible by comparing
+				// with the current map bounds.
+				console.log(markers)
+				markers.eachLayer(function(marker) {
+					//console.log(clusterGroup);
+					if (bounds.contains(marker.getLatLng())) {
+						inBounds.push(marker.options.title);
+						console.log(marker.options.title);
+						//console.log(marker.options)
+					}
+				});
+				// Display a list of markers.
+				//console.log(inBounds)
+				document.getElementById('coordinates').innerHTML = inBounds.join('\n');
+			}
+$("body").on("click","img.leaflet-marker-icon",function(){
+	if($(this).hasClass("active")){
+		$(this).removeClass("active");
+		$(this).siblings().removeClass("active");
+		//$(this).addClass("active");
+	}
+	else{
+	$(this).siblings().removeClass("active");
+	$(this).addClass("active");
+	}
+})
+		</script>
+	</body>
+</html>

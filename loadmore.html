@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+	<head>
+		<meta charset="UTF-8">
+		<title>LOAD MORE</title>
+
+		<style>
+			.box {
+  border: solid 1px #000; 
+  height: 200px; 
+  width: 200px;
+  line-height: 200px;
+  text-align: center;
+  display: inline-block;
+  margin: 20px;
+}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="container">
+
+		</div>
+		<p id="demo"></p>
+
+		<button onclick="load()">
+			Load More
+		</button>
+
+		<script >
+			document.body.onload = load;
+
+function addDiv() {
+    
+  var newDiv = document.createElement("div");
+  newDiv.className = "box";
+  //Add text inside of the parent new Div
+  newDiv.appendChild(document.createTextNode("Test"));
+  document.querySelector(".container").appendChild(newDiv);
+ 
+// gets the number of divs inside of the body
+var	myNodelist = document.getElementsByTagName("div");
+  //Subtract - 1 from the loop 
+var nodeListsub1 = myNodelist.length-1;
+  //prints out the number of divs in a p tag
+
+  // if we put myNodeList.length-1 after "Test" It will return NaN
+document.getElementById("demo").innerHTML = "Results " + nodeListsub1;
+}
+
+function load() {
+  for (i = 1; i <= 10; i++) {
+    addDiv();
+  }
+}
+		</script>
+
+	</body>
+
+</html>

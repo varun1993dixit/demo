@@ -1,0 +1,87 @@
+<!-- <html>
+	<body>
+		<table id="table">
+			<tr>
+    <th>Questions</th>
+    <th>Answer</th>
+   
+  </tr>
+  <tr>
+    <td>India</td>
+    <td>new york</td>
+   
+  </tr>
+  <tr>
+    <td>england</td>
+    <td>delhi</td>
+    
+  </tr>
+  <tr>
+    <td>Usa<td
+    <td>London</td>
+    
+  </tr>
+		</table>
+	</body>
+</html> -->
+<!-- 
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script >
+$(document).ready(function(){
+    $('.chk').on('change', function() {
+    $('.chk').not(this).prop('checked', false);  
+});
+})
+$(document).ready(function(){
+    $('.ck').on('change', function() {
+    $('.ck').not(this).prop('checked', false);  
+});
+});
+for(var i=0; i<3; i++){
+	
+$("body").find(".chk").eq(Math.floor(Math.random() * 3)).prependTo("#form")
+console.log($("input").length);
+}
+
+
+    </script>
+    </head>
+    <body>
+            <form  action="" id = "form">
+        <input type="checkbox" class="chk" id="q-1" name="vehicle" >Delhi<br />
+        <input type="checkbox" class="chk" id="q-2" name="vehicle" >new york<br />
+        <input type="checkbox" class="chk" id="q-3"name="vehicle" >london<br />
+</form>
+<form action="">
+        <input type="checkbox" class="ck" id="a-1" name="vehicle" >india<br />
+        <input type="checkbox" class="ck" id="a-2" name="vehicle" >uk<br />
+         <input type="checkbox" class="ck" id="a-3" name="vehicle" >america<br />
+</form>
+    </body>
+    </html> -->
+    
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<ul class="each"></ul>
+		<script>
+		var	arr=['9','8','7','6','5','4','3','2','1'];
+			arr.forEach(function(val,i){
+				$(".each").prepend("<li>"+val+"</li>")
+			})
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
